@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  address: MyString
+  date: 2015-04-07
+  reservation: MyString
+
+two:
+  name: MyString
+  address: MyString
+  date: 2015-04-07
+  reservation: MyString
