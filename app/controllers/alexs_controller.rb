@@ -2,7 +2,7 @@ class AlexsController < ApplicationController
 
 	def index
 	fiesta = Party.new(permit)		
-		if fiesta = Party.exists?			
+		if fiesta = Party.exists? || fiesta1 = Party.exists? || fiesta2 = Party.exists?	|| fiesta3 = Party.exists?
 			fiesta = Party.all		
 			render json: fiesta			
 		else
