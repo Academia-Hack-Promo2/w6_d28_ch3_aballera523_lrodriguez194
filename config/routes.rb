@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'alexs/' => 'alexs#index'
+  get 'alexs/:id' => 'alexs#show'
   post 'alexs/' => 'alexs#create'
   put 'alexs/:id' => 'alexs#update'
   delete 'alexs/:id' => 'alexs#destroy'

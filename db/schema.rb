@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20150408011324) do
   create_table "parties", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.string   "address",     limit: 255
-    t.date     "date"
+    t.string   "date",        limit: 255
     t.string   "reservation", limit: 255
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false

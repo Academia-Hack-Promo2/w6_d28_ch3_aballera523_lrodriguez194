@@ -1,39 +1,47 @@
-class AlexsController < ApplicationController
+class AlexsController < ApplicationController	
+
 	def index
-		party = Party.all
-		render json: party
+		fiesta = Party.all		
+		render json: fiesta
 	end
 
 	def show
-		party = Party.find(params[:id])
-		render json: party
+		fiesta = Party.find(params[:id])
+		render json: fiesta.to_json
 	end
 
 	def create
-		party = Party.new(permit)
-		if party.save
-			render json: {message: "Party created", id: party.id}
+		fiesta = Party.new(permit)
+		if fiesta.valid?
+			fiesta.save
+			render json: fiesta
 		else
-			render json: {message: "Party not created"}
+			render json: fiesta.errors.message
 		end
 	end
 
 	def destroy
-		party = Party.find(params[:id])
-		if party.destroy
-			render json: {message: "Party was destroyed"}
+		exist = Party.exists?(params[:id])
+		if exist
+			fiesta = Party.delete(params[:id])
+			render json: {"Mensaje" => "El evento fue borrado"}
 		else
-			render json: {message: "Party can not destroyed"}
+			render json: fiesta.errors.message
 		end
 	end
 
 	def update
-		party = Party.update(params[:id].to_i, permit)
-		render json: party
+		exist = Party.exists?(params[:id])
+		if exist
+			fiesta = Party.update(params[:id], permit)
+			render json: fiesta
+		else
+			render json: fiesta.errors.message
+		end
 	end
 
 	private
 	def permit
-		params.require(:party).permit(:name, :address, :date, :reservation)
+		params.permit(:name, :address, :date, :reservation)
 	end
 end
